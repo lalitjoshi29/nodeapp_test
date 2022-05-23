@@ -26,11 +26,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodeapp-service
+  name: nginx-service
 spec:
   selector:
-    app: nodeapp 
-  type: LoadBalancer
+    app: nginxapp 
+  type: NodePort
   ports:
   - protocol: TCP
     port: 8088
