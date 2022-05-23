@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodeapp-deployment
+  name: nginxapp-deployment
   labels:
-    app: nodeapp
+    app: nginxapp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nodeapp
+      app: nginxapp
   template:
     metadata:
       labels:
-        app: nodeapp 
+        app: nginxapp
     spec:
       containers:
-      - name: nodeserver
-        image: lalitjoshi/nodeapp:latest
+      - name: nginxserver
+        image: lalitjoshi/nginx:alpine
         ports:
-        - containerPort: 3000
+        - containerPort: 80
         
         
 ---
@@ -33,6 +33,6 @@ spec:
   type: LoadBalancer
   ports:
   - protocol: TCP
-    port: 5000
-    targetPort: 3000
+    port: 8088
+    targetPort: 80
     nodePort: 31110
